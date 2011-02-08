@@ -1,0 +1,35 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="./master.css" />
+	</head>
+	</body>
+		<div class="page_contents">
+			<h1>Process Thriva Report</h1>
+			<br />
+			<div class="pane">
+				<form enctype="multipart/form-data" action="csv_upload.php" method="POST">
+					<input type="hidden" name="MAX_FILE_SIZE" value="200000" />
+					<table border="0">
+						<tr>
+							<td>Thriva CSV File</td>
+							<td>: </td>
+							<td>
+								<input name="uploadedfile" type="file" />
+							</td>
+							<td class="sidenotecell"><a class="sidenotetext">Choose the Thriva csv report to upload</a></td>
+						</tr>
+						<tr>
+							<td>Debug?</td>
+							<td>: </td>
+							<td>
+								<input type="checkbox" name="debug" value="1" />
+							</td>
+							<td class="sidenotecell"><a class="sidenotetext">Check this if you are having problems to get extra logging info</a></td>
+						</tr>
+					</table>
+					<input type="submit" value="Upload File" />
+				</form>
+			</div>
+		</div>
+	</body>
+</html>

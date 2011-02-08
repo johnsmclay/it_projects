@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "Kettle Thriva Upload"
+AuthUserFile /home/www-data/data-integration/.htpasswd
+Require valid-user

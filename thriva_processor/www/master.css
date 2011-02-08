@@ -1,0 +1,11 @@
+html{font-family:"Verdana",sans-serif;}
+div.pane{background-color:#EAF2D3;width:100%;-moz-border-radius:10px;-webkit-border-radius:10px;border:1px solid #98BF21;padding:10px;}
+h1{color:#98BF21;}
+table{border-collapse:collapse;}
+th.results{background-color:black;color:white;}
+a.required{color:red;font-size:11px;}
+div.page_contents{margin-left:auto;margin-right:auto;width:800;}
+div.report_contents{margin-left:auto;margin-right:auto;float:left;}
+.sidenotetext{color:grey;font-size:12px;}
+.sidenotecell{width:300px;}
+input.submit{padding:5px;font-size:12pt;}
