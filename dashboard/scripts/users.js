@@ -28,7 +28,6 @@ function searchUser()
 function searchUserDisplay(responseJSON)
 {
 	var response=JSON.decode(responseJSON);
-	$("queryUserResult").erase("html");
 	var userTable=$("searchResult");
 	userTable.erase("html");
 	var i=0;
@@ -83,11 +82,11 @@ function addUserDisplay(responseJSON)
 	}
 	else
 	{
+		addUserResult.set({"html": response["output"], "class": "successText"});
 		$(response["server"]).selected=true;
 		$("searchValue").value=response["id"];
 		document.getElementsByName("searchType")[1].checked=true;
 		searchUser();
-		addUserResult.set({"html": response["output"], "class": "successText"});
 	}
 }
 
