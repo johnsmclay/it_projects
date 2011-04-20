@@ -1,0 +1,126 @@
+body
+{
+	font-size: 12px;
+	font-family: Verdana, sans-serif;
+	max-width: 960px;
+	margin: 0 auto;
+	border-left: 1px solid #444444;
+	border-right: 1px solid #444444;
+}
+.hidden
+{
+	display: none;
+}
+h1, p
+{
+	margin: 0;
+	padding: 10px 0;
+}
+#header, #content, #footer
+{
+	background: #DDDDDD;
+}
+.failedText, #loadingStatus
+{
+	color: red;
+}
+.successText
+{
+	color: green;
+}
+a, a:visited
+{
+	color: #FF8800;
+	text-decoration: none;
+}
+a:hover, a:focus, a:active
+{
+	text-decoration: underline;
+}
+#header
+{
+	height: 60px;
+	font-size: 24px;
+	font-family: Georgia, Times, "Times New Roman", serif;
+	text-align: center;
+	padding-bottom: 20px;
+}
+#mainMenu ul
+{
+	background: #444444;
+	margin: 0;
+	padding: 3px 7px;
+	height: 24px;
+}
+#mainMenu ul li
+{
+	font-size: 16px;
+	margin: 0;
+	padding: 0 3px;
+	float: left;
+	list-style-type: none;
+	text-align: center;
+	color: white;
+}
+#content
+{
+	clear: both;
+	padding: 0 10px;
+	min-height: 350px;
+}
+#contentH1
+{
+	padding-top: 20px;
+}
+table
+{
+	margin: 10px 0;
+	border-collapse: collapse;
+	width: 100%;
+}
+td input
+{
+	width: 90% !important;
+}
+thead, tfoot, .editRow
+{
+	color: white;
+	background: #444444;
+}
+thead, tfoot
+{
+	text-align: center;
+}
+td, th
+{
+	border: 1px solid #444444;
+	border-collapse: collapse;
+	padding: 0 3px;
+	min-width: 40px;
+}
+.productTh, .idTh
+{
+	width: 80px;
+}
+.productTh input, .productTh select, .idTh input
+{
+	width: 90%;
+}
+.altRow
+{
+	background: white;
+}
+#footer
+{
+	border-top: 1px solid #444444;
+	text-align: center;
+}
+dt
+{
+	font-weight: bold;
+}
+dd
+{
+	margin-left: 15px;
+	margin-bottom: 10px;
+}
