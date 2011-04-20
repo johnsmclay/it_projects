@@ -29,6 +29,10 @@ function searchUserDisplay(responseJSON)
 {
 	var response=JSON.decode(responseJSON);
 	var userTable=$("searchResult");
+	if($("queryUserResult").get("class")=="failedText")
+	{
+		$("queryUserResult").erase("html");
+	};
 	userTable.erase("html");
 	var i=0;
 	if(response["status"])
