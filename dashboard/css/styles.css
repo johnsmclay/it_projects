@@ -11,6 +11,10 @@ body
 {
 	display: none;
 }
+#header h1
+{
+	font-size: 40px;
+}
 h1, p
 {
 	margin: 0;
