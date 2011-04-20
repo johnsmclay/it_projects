@@ -46,6 +46,7 @@
 		<div id="content">
 			<h1 id="contentH1">Welcome to the dashboard!</h1>
 			<div id="contentBody">
+				<p>Just git clone it (it_projects folder), so it'll work on your localhost services too.</p>
 				<p>Current working features:</p>
 				<dl>
 					<dt>- Course push:</dt>

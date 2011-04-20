@@ -31,7 +31,8 @@
 	// Sections contents
 	//
 	// Home
-	$contentBodies["home"]="<p>Current working features:</p>\n";
+	$contentBodies["home"]="<p>Just git clone it (it_projects folder), so it'll work on your localhost services too.</p>";
+	$contentBodies["home"].="<p>Current working features:</p>\n";
 	$contentBodies["home"].="<dl>\n";
 	$contentBodies["home"].="<dt>- Course push:</dt>\n";
 	$contentBodies["home"].="<dd>Copy a course from a service to another one.</dd>\n";
