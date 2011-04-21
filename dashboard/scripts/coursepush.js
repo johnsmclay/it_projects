@@ -1,10 +1,13 @@
 function searchCourse()
 {
-	var sCValue=$("searchCourseValue").value;
 	var sCFrom=$("searchCourseDB").value;
-	if(sCValue!=""&&sCValue!=null)
+	if(sCFrom!=0)
 	{
-		sendReq("POST", true, "./scripts/coursepush.php", "sCValue="+sCValue+"&sCFrom="+sCFrom, searchCourseDisplay);
+		if($("defaultFrom"))
+		{
+			$("defaultFrom").dispose();
+		};
+		sendReq("POST", true, "./scripts/coursepush.php", "sCFrom="+sCFrom, searchCourseDisplay);
 	};
 }
 
@@ -12,10 +15,16 @@ function searchCourseDisplay(responseJSON)
 {
 	var response=JSON.decode(responseJSON);
 	$("searchCourseDBResult").erase("html");
+	$("searchCourseResult").erase("html");
 	if(response.length!=0)
 	{
-		$("searchCourseResult").set({"html": "<span id=\"courseId\">"+response["id"]+"</span> - "+response["uid"]+" - "+response["name"]});
 		var i=0;
+		for(i=0; i<response["courses"].length; i++)
+		{
+			var courseOption=new Element("option", {"html": response["courses"][i]["id"]+" - "+response["courses"][i]["uid"]+" - "+response["courses"][i]["name"], "value": response["courses"][i]["id"]});
+			courseOption.inject($("searchCourseResult"));
+		};
+		i=0;
 		for(i=0; i<response["services"].length; i++)
 		{
 			var serviceOption=new Element("option", {"html": response["services"][i][0], "value": response["services"][i][1]});
@@ -33,7 +42,7 @@ function searchCourseDisplay(responseJSON)
 function pushCourse()
 {
 	$("queryCourseResult").erase("html");
-	var pCId=$("courseId").get("html");
+	var pCId=$("searchCourseResult").value;
 	var pCFrom=$("searchCourseDB").value;
 	var pCTo=$("searchCourseDBResult").value;
 	sendReq("POST", true, "./scripts/coursepush.php", "pCId="+pCId+"&pCFrom="+pCFrom+"&pCTo="+pCTo, pushCourseDisplay);

@@ -1,10 +1,9 @@
 <?php
-	if(isset($_POST["sCValue"]))
+	if(isset($_POST["sCFrom"]))
 	{
-		$sCValue=$_POST["sCValue"];
 		$sCFrom=$_POST["sCFrom"];
 		$sCFromArr=explode("DB", $sCFrom);
-		searchCourse($sCValue, $sCFromArr);
+		searchCourse($sCFromArr);
 	};
 	if(isset($_POST["pCId"]))
 	{
@@ -16,7 +15,7 @@
 		pushCourse($pCId, $pFromArr, $pToArr);
 	};
 
-	function searchCourse($sCValue, $sCFromArr)
+	function searchCourse($sCFromArr)
 	{
 		require_once("sql.class.php");
 		include("dbstructure.php");
@@ -35,8 +34,8 @@
 				break;
 		};
 		$fields=array("id", $uidName." as uid", "title as name");
-		$result=$sql->getSelectQ(false, $fields, "courses", array($uidName."=\"".$sCValue."\"", "deleted=\"0000-00-00 00:00:00\""));
-		if(isset($result["id"]))
+		$result=array();
+		if(is_array($result["courses"]=$sql->getSelectQ(true, $fields, "courses", "deleted=\"0000-00-00 00:00:00\"", array($uidName, "ASC"))))
 		{
 			$result["services"]=$services[$sCFromArr[2]];
 		};

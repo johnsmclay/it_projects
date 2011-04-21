@@ -51,20 +51,19 @@
 	$contentBodies["recflush"].="<p><input type=\"button\" value=\"Flush all records\" onclick=\"Javascript:flushAll()\" /></p>\n";
 	$contentBodies["recflush"].="<p id=\"queryRecordsResult\"></p>\n";
 	// Courses push
-	$contentBodies["coursepush"]="<p>Search a course with its identifier:<br />\n";
-	$contentBodies["coursepush"].="<input type=\"text\" id=\"searchCourseValue\" onkeyup=\"Javascript:searchCourse()\" onchange=\"Javascript:searchCourse()\" />\n";
-	$contentBodies["coursepush"].="on <select onchange=\"Javascript:searchCourse()\" id=\"searchCourseDB\">\n";
+	$contentBodies["coursepush"]="<p>Search a course on <select onchange=\"Javascript:searchCourse()\" id=\"searchCourseDB\">\n";
+	$contentBodies["coursepush"].="<option id=\"defaultFrom\" value=\"0\">Select a service</option>\n";
 	$contentBodies["coursepush"].="<option class=\"loDBpglms1DBpglms\" value=\"loDBpglms1DBpglms\">pglms1 @ localhost</option>\n";
 	$contentBodies["coursepush"].="<option class=\"qaDBpglms1DBpglms\" value=\"qaDBpglms1DBpglms\">pglms1 @ QA</option>\n";
 	$contentBodies["coursepush"].="<option class=\"qaDBpglms2DBpglms\" value=\"qaDBpglms2DBpglms\">pglms2 @ QA</option>\n";
 	$contentBodies["coursepush"].="<option class=\"loDBspeakezDBspeakez\" value=\"loDBspeakezDBspeakez\">speakez @ localhost</option>\n";
-	$contentBodies["coursepush"].="<option class=\"qaDBspeakez1DBspeakez\" value=\"qaDBspeakez1DBspeakez\">speakez @ QA</option>\n";
-	$contentBodies["coursepush"].="<option class=\"qaDBspeakez2DBspeakez\" value=\"qaDBspeakez2DBspeakez\">speakez @ QA</option>\n";
+	$contentBodies["coursepush"].="<option class=\"qaDBspeakez1DBspeakez\" value=\"qaDBspeakez1DBspeakez\">speakez1 @ QA</option>\n";
+	$contentBodies["coursepush"].="<option class=\"qaDBspeakez2DBspeakez\" value=\"qaDBspeakez2DBspeakez\">speakez2 @ QA</option>\n";
 	$contentBodies["coursepush"].="</select>\n";
 	$contentBodies["coursepush"].="</p>\n";
-	$contentBodies["coursepush"].="<p>Course found:</p>\n";
-	$contentBodies["coursepush"].="<p id=\"searchCourseResult\">None</p>\n";
-	$contentBodies["coursepush"].="<p>Push it on <select id=\"searchCourseDBResult\"></select> <input type=\"button\" id=\"pushCourseButton\" value=\"Run\" onclick=\"Javascript:pushCourse()\" disabled=\"disabled\" /> (This will take a while) <span id=\"loadingStatus\"></span></p>\n";
+	$contentBodies["coursepush"].="<p>Courses found:<br />\n";
+	$contentBodies["coursepush"].="<select id=\"searchCourseResult\"></select></p>\n";
+	$contentBodies["coursepush"].="<p>Push the selected course on <select id=\"searchCourseDBResult\"></select> <input type=\"button\" id=\"pushCourseButton\" value=\"Run\" onclick=\"Javascript:pushCourse()\" disabled=\"disabled\" /> (This will take a while) <span id=\"loadingStatus\"></span></p>\n";
 	$contentBodies["coursepush"].="<p id=\"queryCourseResult\"></p>\n";
 	// SSO contact info
 	$contentBodies["ssoinfo"]="<p><em>Retrieve SSO contact information on PGLMS live server.</em></p>\n";
