@@ -30,6 +30,17 @@
 		$result["server"]=implode("DB", $sGServ);
 		if($sGValue!="")
 		{
+			if($sGType=="user_id")
+			{
+				if($userId=$sql->getSelectQ(false, "id", "users", array("identifier=\"".$sGValue."\"", "deleted=\"0000-00-00 00:00:00\""), null, 1))
+				{
+					$sGValue=$userId["id"];
+				}
+				else
+				{
+					$userId="noid";
+				};
+			};
 			if(is_array($selGrades=$sql->getSelectQ(false, "count(*)", "grades", $sGType."=\"".$sGValue."\"")))
 			{
 				if($selGrades["count(*)"]!=0)
