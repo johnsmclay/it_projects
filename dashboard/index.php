@@ -46,7 +46,7 @@
 				<li>|</li>
 				<li><a href="Javascript:loadPanel(6)">Activities build report</a></li>
 				<li>|</li>
-				<li><a href="Javascript:loadPanel(7)">Activities tags report</a></li>
+				<li><a href="Javascript:loadPanel(7)">ACTFL report</a></li>
 			</ul>
 		</div>
 		<div id="content">

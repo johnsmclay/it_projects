@@ -30,7 +30,7 @@
 	// Activities build report
 	$titles["actbreport"]="Activities build report";
 	// Activities tags report
-	$titles["actflreport"]="Activities tags report";
+	$titles["actflreport"]="ACTFL report";
 
 	// Sections contents
 	//
