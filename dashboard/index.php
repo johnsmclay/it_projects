@@ -20,6 +20,8 @@
                 <script type="text/javascript" src="./scripts/recflush.js"></script>
                 <script type="text/javascript" src="./scripts/coursepush.js"></script>
 		<script type="text/javascript" src="./scripts/ssoinfo.js"></script>
+		<script type="text/javascript" src="./scripts/actbreport.js"></script>
+		<script type="text/javascript" src="./scripts/actflreport.js"></script>
 
 		<!-- Add some IE conditions here, if necessary -->
 
@@ -41,6 +43,10 @@
 				<li><a href="Javascript:loadPanel(4)">Users management</a></li>
 				<li>|</li>
 				<li><a href="Javascript:loadPanel(5)">Grades flush</a></li>
+				<li>|</li>
+				<li><a href="Javascript:loadPanel(6)">Activities build report</a></li>
+				<li>|</li>
+				<li><a href="Javascript:loadPanel(7)">Activities tags report</a></li>
 			</ul>
 		</div>
 		<div id="content">

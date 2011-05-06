@@ -23,6 +23,12 @@ function loadPanel(val)
 		case 5:
 			panel="gradeflush";
 			break;
+		case 6:
+			panel="actbreport";
+			break;
+		case 7:
+			panel="actflreport";
+			break;
 		default:
 		// Default case should call a basic tab.
 			panel="home";
