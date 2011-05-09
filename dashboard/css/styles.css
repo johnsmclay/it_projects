@@ -13,7 +13,14 @@ body
 }
 #header h1
 {
-	font-size: 40px;
+	width: 192px;
+	height: 100px;
+	margin: auto;
+	background: transparent url("./img/mil_logo.png") no-repeat top left;
+}
+#header h1 span
+{
+	display: none;
 }
 h1, p
 {
@@ -47,11 +54,10 @@ a:hover, a:focus, a:active
 }
 #header
 {
-	height: 60px;
 	font-size: 24px;
 	font-family: Georgia, Times, "Times New Roman", serif;
 	text-align: center;
-	padding-bottom: 20px;
+	padding-top: 10px;
 }
 #mainMenu ul
 {

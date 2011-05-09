@@ -28,7 +28,9 @@
 	</head>
 	<body>
 		<div id="header">
-			<h1>Middlebury Interactive - Admin dashboard</h1>
+			<h1>
+				<span>Middlebury Interactive - Admin dashboard</span>
+			</h1>
 		</div>
 		<div id="mainMenu">
 			<ul>

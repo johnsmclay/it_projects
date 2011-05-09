@@ -29,7 +29,7 @@
 	$titles["gradeflush"]="Tests grades flush";
 	// Activities build report
 	$titles["actbreport"]="Activities build report";
-	// Activities tags report
+	// ACTFL report
 	$titles["actflreport"]="ACTFL report";
 
 	// Sections contents
@@ -249,7 +249,7 @@
 </p>
 <ul id=\"queryActivitiesResult\"></ul>\n";
 
-	// Activities tags report
+	// ACTFL report
 	$contentBodies["actflreport"]=
 "<div class=\"rightColumn\">
 	<p>
@@ -296,7 +296,9 @@
 <div>
 	<p>Search for activities with following tags checked:</p>
 	<p>
-		<strong>ACTFL</strong><br />
+		<strong>ACTFL</strong>
+		(<a href =\"Javascript:searchACTFLActivitiesSelectAll()\">check</a> /
+		<a href =\"Javascript:searchACTFLActivitiesSelectNone()\">uncheck</a> all)<br />
 		<input type=\"checkbox\" value=\"oneone\" name=\"tags\" /> 1.1
 		<input type=\"checkbox\" value=\"onetwo\" name=\"tags\" /> 1.2
 		<input type=\"checkbox\" value=\"onethree\" name=\"tags\" /> 1.3<br />

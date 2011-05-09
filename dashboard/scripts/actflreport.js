@@ -1,3 +1,23 @@
+function searchACTFLActivitiesSelectAll()
+{
+	var i=0;
+	var checkboxes=document.getElementsByName("tags");
+	for(i=0; i<checkboxes.length; i++)
+	{
+		checkboxes[i].checked=true;
+	};
+}
+
+function searchACTFLActivitiesSelectNone()
+{
+	var i=0;
+	var checkboxes=document.getElementsByName("tags");
+	for(i=0; i<checkboxes.length; i++)
+	{
+		checkboxes[i].checked=false;
+	};
+}
+
 function searchACTFLActivities()
 {
 	$("queryActivitiesResult").erase("html");
