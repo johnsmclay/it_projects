@@ -132,7 +132,8 @@
 	<tbody id=\"searchSSOResult\">
 	</tbody>
 </table>
-<p id=\"querySSOResult\"></p>\n";
+<p class=\"hidden\" id=\"schoolDetailsTitle\"></p>
+<ul class=\"hidden\" id=\"schoolDetails\"></ul>\n";
 
 	// Users
 	$contentBodies["user"]=
