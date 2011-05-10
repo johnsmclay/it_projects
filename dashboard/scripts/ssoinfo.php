@@ -13,7 +13,7 @@
 	{
 		require_once("sql.class.php");
 		$sql=new Sql("livepglms");
-		$result=$sql->getSelectQ(true, array("id", "school_name as sname", "description as name", "parent_id as parentid", "contact"), "schools", "secret is not null", array("id", "ASC"));
+		$result=$sql->getSelectQ(true, array("schools.id as id", "school_name as sname", "description as name", "parent_id as parentid", "contact"), "schools, sections", array("secret is not null", "schools.id=sections.school_id", "sections.deleted=\"0000-00-00 00:00:00\"", "(\n\tsections.expires is null\n\tOR\n\tsections.expires=\"0000-00-00 00:00:00\"\n\tOR\n\tsections.expires>\"".date("Y-m-d H:i:s")."\"\n)", "schools.id!=1", "schools.id!=2", "schools.id!=177"), null, null, array("schools.id", "ASC"));
 		foreach($result as &$sc)
 		{
 			if($sc["contact"]!=""&&$sc["contact"]!=null)

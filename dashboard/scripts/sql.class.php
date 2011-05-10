@@ -75,7 +75,7 @@
 			};
 			return $str;
 		}
-		function getSelectQ($multi, $fields, $tables, $clauses=null, $order=null, $limit=null)
+		function getSelectQ($multi, $fields, $tables, $clauses=null, $order=null, $limit=null, $group=null)
 		{
 			$fields=$this->getStrToArr($fields);
 			$tables=$this->getStrToArr($tables);
@@ -93,6 +93,11 @@
 			{
 				$query.="\nORDER BY\n";
 				$query.=addslashes(implode("\n", $order));
+			};
+			if($group&&is_array($group))
+			{
+				$query.="\nGROUP BY\n";
+				$query.=addslashes(implode("\n", $group));
 			};
 			if($limit&&is_int($limit))
 			{

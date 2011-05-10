@@ -1,5 +1,11 @@
 function getSchoolsList()
 {
+	$("searchSSOResult").erase("html");
+	$("numSchools").set({"html": "0"});
+	if($("searchSSOResult").getParent().hasClass("hidden")==true)
+	{
+		toggleDetails();
+	};
 	sendReq("POST", true, "./scripts/ssoinfo.php", "getSchools=1", getSchoolsListDisplay);
 }
 
@@ -7,7 +13,6 @@ function getSchoolsListDisplay(responseJSON)
 {
 	var response=JSON.decode(responseJSON);
 	var i=0;
-	$("searchSSOResult").erase("html");
 	$("numSchools").set({"html": response.length});
 	for(i=0; i<response.length; i++)
 	{
