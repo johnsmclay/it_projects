@@ -19,33 +19,38 @@
 			if($sc["contact"]!=""&&$sc["contact"]!=null)
 			{
 				$contactInfo=$sql->getSelectQ(false, array("id", "user_type_id", "username", "first_name", "last_name", "email"), "users", "id=".$sc["contact"]);
+//print_r($contactInfo);
 				$complete=true;
-				foreach($contactInfo as $ci)
+				foreach($contactInfo as $key=>$ci)
 				{
 					if($ci==""||$ci==null)
 					{
+//echo $key;
 						$complete=false;
 					};
 				};
-				if($contactInfo["user_type_id"]!=2)
+				if($contactInfo["user_type_id"]!=6)
 				{
 					$sc["color"]="#FF8800";
 					$sc["sso"]="Incorrect user type";
-				};
-				if($complete==true)
-				{
-					$sc["color"]="green";
-					$sc["sso"]="Complete information: ".$contactInfo["id"]." - ".$contactInfo["first_name"]." ".$contactInfo["last_name"]." - ".$contactInfo["email"];
 				}
 				else
 				{
-					$sc["color"]="#FF8800";
-					$sc["sso"]="Incomplete information";
+					if($complete==true)
+					{
+						$sc["color"]="green";
+						$sc["sso"]="Complete information: ".$contactInfo["id"]." - ".$contactInfo["first_name"]." ".$contactInfo["last_name"]." - ".$contactInfo["email"];
+					}
+					else
+					{
+						$sc["color"]="#FF8800";
+						$sc["sso"]="Incomplete information";
+					};
 				};
 			}
 			else
 			{
-				$contactInfo=$sql->getSelectQ(true, array("id", "username", "first_name", "last_name", "email"), "users", array("user_type_id=2", "school_id=".$sc["id"]));
+				$contactInfo=$sql->getSelectQ(true, array("id", "username", "first_name", "last_name", "email"), "users", array("user_type_id=6", "school_id=".$sc["id"], "deleted=\"0000-00-00 00:00:00\""));
 				if(isset($contactInfo[0]))
 				{
 					$numA=0;
@@ -95,7 +100,7 @@
 		require_once("sql.class.php");
 		$sql=new Sql("livepglms");
 		$result=$sql->getSelectQ(false, "description as school", "schools", "id=".$id);
-		$result["users"]=$sql->getSelectQ(true, array("id", "username", "first_name as fname", "last_name as lname", "email"), "users", array("user_type_id=2", "school_id=".$id));
+		$result["users"]=$sql->getSelectQ(true, array("id", "username", "first_name as fname", "last_name as lname", "email"), "users", array("user_type_id=6", "school_id=".$id, "deleted=\"0000-00-00 00:00:00\""));
 		echo json_encode($result);
 	}
 ?>
