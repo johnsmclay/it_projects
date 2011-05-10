@@ -95,7 +95,7 @@
 		require_once("sql.class.php");
 		$sql=new Sql("livepglms");
 		$result=$sql->getSelectQ(false, "description as school", "schools", "id=".$id);
-		$result["users"]=$sql->getSelectQ(true, array("id", "username", "first_name", "last_name", "email"), "users", array("user_type_id=2", "school_id=".$id));
+		$result["users"]=$sql->getSelectQ(true, array("id", "username", "first_name as fname", "last_name as lname", "email"), "users", array("user_type_id=2", "school_id=".$id, "last_login is not null"));
 		echo json_encode($result);
 	}
 ?>
