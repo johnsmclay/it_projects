@@ -18,7 +18,7 @@
 		{
 			if($sc["contact"]!=""&&$sc["contact"]!=null)
 			{
-				$contactInfo=$sql->getSelectQ(false, array("id", "user_type_id", "username", "first_name", "last_name", "email", "last_login"), "users", "id=".$sc["contact"]);
+				$contactInfo=$sql->getSelectQ(false, array("id", "user_type_id", "username", "first_name", "last_name", "email"), "users", "id=".$sc["contact"]);
 				$complete=true;
 				foreach($contactInfo as $ci)
 				{
@@ -45,7 +45,7 @@
 			}
 			else
 			{
-				$contactInfo=$sql->getSelectQ(true, array("id", "username", "first_name", "last_name", "email", "last_login"), "users", array("user_type_id=2", "school_id=".$sc["id"]));
+				$contactInfo=$sql->getSelectQ(true, array("id", "username", "first_name", "last_name", "email"), "users", array("user_type_id=2", "school_id=".$sc["id"]));
 				if(isset($contactInfo[0]))
 				{
 					$numA=0;
@@ -95,7 +95,7 @@
 		require_once("sql.class.php");
 		$sql=new Sql("livepglms");
 		$result=$sql->getSelectQ(false, "description as school", "schools", "id=".$id);
-		$result["users"]=$sql->getSelectQ(true, array("id", "username", "first_name as fname", "last_name as lname", "email"), "users", array("user_type_id=2", "school_id=".$id, "last_login is not null"));
+		$result["users"]=$sql->getSelectQ(true, array("id", "username", "first_name as fname", "last_name as lname", "email"), "users", array("user_type_id=2", "school_id=".$id));
 		echo json_encode($result);
 	}
 ?>
