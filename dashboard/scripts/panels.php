@@ -252,54 +252,40 @@
 
 	// ACTFL report
 	$contentBodies["actflreport"]=
-"<div class=\"rightColumn\">
+"<div>
 	<p>
-		Or browse courses to get a list of their activities and their ACTFL tags:<br />
-		<input type=\"button\" value=\"Refresh courses list\" onclick=\"Javascript:getACTFLCoursesList()\" />
+		<input type=\"button\" value=\"Refresh courses list\" onclick=\"Javascript:getACTFLCoursesList()\" /><br />
+		Search for activities with following tags checked:
 	</p>
-	<table>
-		<tbody>
-			<tr>
-				<td class=\"idTh\">Course:</td>
-				<td>
-					<select id=\"courseId\" disabled=\"disabled\" onchange=\"Javascript:getACTFLList('unit')\">
-						<option value=\"0\">Choose a course&hellip;</option>
-					</select>
-				</td>
-			</tr>
-			<tr>
-				<td class=\"idTh\">Unit:</td>
-				<td>
-					<select id=\"unitId\" disabled=\"disabled\" onchange=\"Javascript:getACTFLList('lesson')\">
-						<option value=\"0\">Choose a unit&hellip;</option>
-					</select>
-				</td>
-			</tr>
-			<tr>
-				<td class=\"idTh\">Lesson:</td>
-				<td>
-					<select id=\"lessonId\" disabled=\"disabled\" onchange=\"Javascript:getACTFLList('chain')\">
-						<option value=\"0\">Choose a lesson&hellip;</option>
-					</select>
-				</td>
-			</tr>
-			<tr>
-				<td class=\"idTh\">Chain:</td>
-				<td>
-					<select id=\"chainId\" disabled=\"disabled\" onchange=\"Javascript:getACTFLActivitiesList()\">
-						<option value=\"0\">Choose a chain&hellip;</option>
-					</select>
-				</td>
-			</tr>
-		</tbody>
-	</table>
-</div>
-<div>
-	<p>Search for activities with following tags checked:</p>
 	<p>
-		<strong>ACTFL</strong>
+		<select id=\"courseId\" disabled=\"disabled\" onchange=\"Javascript:getACTFLList('unit')\">
+			<option value=\"0\">Choose a course&hellip;</option>
+		</select>
+		<br />
+		<select id=\"unitId\" disabled=\"disabled\" onchange=\"Javascript:getACTFLList('lesson')\">
+			<option value=\"0\">Choose a unit&hellip;</option>
+		</select>
+		<br />
+		<select id=\"lessonId\" disabled=\"disabled\" onchange=\"Javascript:getACTFLList('chain')\">
+			<option value=\"0\">Choose a lesson&hellip;</option>
+		</select>
+		<br />
+		<select id=\"chainId\" disabled=\"disabled\">
+			<option value=\"0\">Choose a chain&hellip;</option>
+		</select>
+	</p>
+	<p>
+		Tag group:
+		<select id=\"tGroup\" onchange=\"Javascript:switchTagGroup()\">
+			<option value=\"actfl\">ACTFL</option>
+			<option value=\"skills\">Skills</option>
+			<option value=\"finalgrade\">Final grade</option>
+			<option value=\"other\">Other</option>
+		</select>
 		(<a href =\"Javascript:searchACTFLActivitiesSelectAll()\">check</a> /
 		<a href =\"Javascript:searchACTFLActivitiesSelectNone()\">uncheck</a> all)<br />
+	</p>
+	<div id=\"tagsDiv\">
 		<input type=\"checkbox\" value=\"oneone\" name=\"tags\" /> 1.1
 		<input type=\"checkbox\" value=\"onetwo\" name=\"tags\" /> 1.2
 		<input type=\"checkbox\" value=\"onethree\" name=\"tags\" /> 1.3<br />
@@ -311,9 +297,10 @@
 		<input type=\"checkbox\" value=\"fourtwo\" name=\"tags\" /> 4.2<br />
 		<input type=\"checkbox\" value=\"fiveone\" name=\"tags\" /> 5.1
 		<input type=\"checkbox\" value=\"fivetwo\" name=\"tags\" /> 5.2
-	</p>
+	</div>
 	<p>
-		<input type=\"button\" onclick=\"Javascript:searchACTFLActivities()\" value=\"Search\" />
+		<input type=\"button\" onclick=\"Javascript:searchACTFLActivities()\" value=\"Search\" /> or
+		<input type=\"button\" onclick=\"Javascript:getACTFLActivitiesList()\" value=\"List activities\" />
 		<span id=\"loadingStatus\"></span>
 	</p>
 </div>

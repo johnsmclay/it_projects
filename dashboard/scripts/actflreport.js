@@ -39,9 +39,35 @@ function searchACTFLActivities()
 			};
 		};
 	};
+	var postClauses="tags="+tags;
+	if($("chainId").value!=0)
+	{
+		postClauses+="&pId="+$("chainId").value+"&startType=chain";
+	}
+	else
+	{
+		if($("lessonId").value!=0)
+		{
+			postClauses+="&pId="+$("lessonId").value+"&startType=lesson";
+		}
+		else
+		{
+			if($("unitId").value!=0)
+			{
+				postClauses+="&pId="+$("unitId").value+"&startType=unit";
+			}
+			else
+			{
+				if($("courseId").value!=0)
+				{
+					postClauses+="&pId="+$("courseId").value+"&startType=course";
+				};
+			};
+		};
+	};
 	if(tags!="starttags")
 	{
-		sendReq("POST", true, "./scripts/actflreport.php", "tags="+tags, searchACTFLActivitiesDisplay);
+		sendReq("POST", true, "./scripts/actflreport.php", postClauses, searchACTFLActivitiesDisplay);
 	}
 	else
 	{
@@ -204,7 +230,33 @@ function getACTFLActivitiesList()
 	$("loadingStatus").erase("html");
 	if($("chainId").value!=0)
 	{
-		sendReq("POST", true, "./scripts/actflreport.php", "actChainId="+$("chainId").value, getACTFLActivitiesListDisplay);
+		sendReq("POST", true, "./scripts/actflreport.php", "actPId="+$("chainId").value+"&tGroup="+$("tGroup").value, getACTFLActivitiesListDisplay);
+	}
+	else
+	{
+		var postClauses="tGroup="+$("tGroup").value;
+		if($("lessonId").value!=0)
+		{
+			postClauses+="&actPId="+$("lessonId").value+"&startType=lesson";
+		}
+		else
+		{
+			if($("unitId").value!=0)
+			{
+				postClauses+="&actPId="+$("unitId").value+"&startType=unit";
+			}
+			else
+			{
+				if($("courseId").value!=0)
+				{
+					postClauses+="&actPId="+$("courseId").value+"&startType=course";
+				};
+			};
+		};
+		if($("courseId").value!=0)
+		{
+			sendReq("POST", true, "./scripts/actflreport.php", postClauses, getACTFLActivitiesListDisplay);
+		};
 	};
 }
 
@@ -213,8 +265,20 @@ function getACTFLActivitiesListDisplay(responseJSON)
 	var response=JSON.decode(responseJSON);
 	var output=$("queryActivitiesResult");
 	output.erase("html");
-	var table=new Element("table", {"html": "<thead><tr><th>Activity title</th><th class=\"idTh\">1.1</th><th class=\"idTh\">1.2</th><th class=\"idTh\">1.3</th><th class=\"idTh\">2.1</th><th class=\"idTh\">2.2</th><th class=\"idTh\">3.1</th><th class=\"idTh\">3.2</th><th class=\"idTh\">4.1</th><th class=\"idTh\">4.2</th><th class=\"idTh\">5.1</th><th class=\"idTh\">5.2</th></tr></thead><tbody></tbody>"});
+	var tagsNames=new Array();
+	tagsNames["actfl"]=["1.1", "1.2", "1.3", "2.1", "2.2", "3.1", "3.2", "4.1", "4.2", "5.1", "5.2"];
+	tagsNames["skills"]=["Listening", "Speaking", "Reading", "Writing"];
+	tagsNames["finalgrade"]=["Course work", "Out of the box project", "Teacher-graded activities", "Unit test", "Midterm", "Final"];
+	tagsNames["other"]=["Culture", "Teacher-graded writing", "Teacher-graded speaking", "Self-graded speaking", "Self-graded writing"];
+	var table=new Element("table", {"html": "<thead><tr><th>Title</th></tr></thead><tbody></tbody>"});
+//<th>1.1</th><th>1.2</th><th>1.3</th><th>2.1</th><th>2.2</th><th>3.1</th><th>3.2</th><th>4.1</th><th>4.2</th><th>5.1</th><th>5.2</th>
 	var i=0;
+	for(i=0; i<tagsNames[$("tGroup").value].length; i++)
+	{
+		var th=new Element("th", {"html": tagsNames[$("tGroup").value][i]});
+		th.inject(table.getElements("thead")[0].getElements("tr")[0]);
+	};
+	i=0;
 	for(i=0; i<response.length; i++)
 	{
 		var tr=new Element("tr");
@@ -225,11 +289,18 @@ function getACTFLActivitiesListDisplay(responseJSON)
 		var j=0;
 		for(j=0; j<response[i].length; j++)
 		{
-			var td=new Element("td", {"html": response[i][j]});
-			if(j!=0)
+			var td=new Element("td");
+			if(response[i][j]=="Yes"||response[i][j]=="No")
 			{
-				td.set({"class": "idTh"});
 				if(response[i][j]=="Yes")
+				{
+					td.set({"html": "<img alt=\"Yes\" src=\"./css/img/checked.png\" />", "style": "text-align: center;"});
+				};
+			}
+			else
+			{
+				td.set({"html": response[i][j]});
+				if(response[i][j]!=0&&j!=0)
 				{
 					td.set({"style": "color: green;"});
 				};
@@ -239,4 +310,40 @@ function getACTFLActivitiesListDisplay(responseJSON)
 		tr.inject(table.getElements("tbody")[0]);
 	};
 	table.inject(output);
+}
+
+function switchTagGroup()
+{
+	var tagsXML=new Array();
+	var tagsNames=new Array();
+	var tagsBR=new Array();
+	tagsXML["actfl"]=["oneone", "onetwo", "onethree", "twoone", "twotwo", "threeone", "threetwo", "fourone", "fourtwo", "fiveone", "fivetwo"];
+	tagsNames["actfl"]=[" 1.1", " 1.2", " 1.3", " 2.1", " 2.2", " 3.1", " 3.2", " 4.1", " 4.2", " 5.1", " 5.2"];
+	tagsBR["actfl"]=[false, false, true, false, true, false, true, false, true, false, false];
+	tagsXML["skills"]=["listening", "speaking", "reading", "writing"];
+	tagsNames["skills"]=[" Listening", " Speaking", " Reading", " Writing"];
+	tagsBR["skills"]=[false, true, false, false];
+	tagsXML["finalgrade"]=["coursework", "outofbox", "teachergradeda", "unittest", "midterm", "finalg"];
+	tagsNames["finalgrade"]=[" Course work", " Out of the box project", " Teacher-graded activities", " Unit test", " Midterm", " Final"];
+	tagsBR["finalgrade"]=[false, false, true, false, false, false];
+	tagsXML["other"]=["culture", "teachergradedw", "teachergradeds", "selfgradeds", "selfgradedw"];
+	tagsNames["other"]=[" Culture", " Teacher-graded writing", " Teacher-graded speaking", " Self-graded speaking", " Self-graded writing"];
+	tagsBR["other"]=[true, false, true, false, false];
+	$("tagsDiv").erase("html");
+	var i=0;
+	for(i=0; i<tagsXML[$("tGroup").value].length; i++)
+	{
+		var checkBox=new Element("input", {"name": "tags", "type": "checkbox", "value": tagsXML[$("tGroup").value][i]});
+		checkBox.inject($("tagsDiv"));
+		$("tagsDiv").appendText(tagsNames[$("tGroup").value][i]);
+		if(tagsBR[$("tGroup").value][i]==true)
+		{
+			var br=new Element("br");
+			br.inject($("tagsDiv"));
+		}
+		else
+		{
+			$("tagsDiv").appendText("\n");
+		};
+	};
 }
