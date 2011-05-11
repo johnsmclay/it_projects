@@ -271,7 +271,6 @@ function getACTFLActivitiesListDisplay(responseJSON)
 	tagsNames["finalgrade"]=["Course work", "Out of the box project", "Teacher-graded activities", "Unit test", "Midterm", "Final"];
 	tagsNames["other"]=["Culture", "Teacher-graded writing", "Teacher-graded speaking", "Self-graded speaking", "Self-graded writing"];
 	var table=new Element("table", {"html": "<thead><tr><th>Title</th></tr></thead><tbody></tbody>"});
-//<th>1.1</th><th>1.2</th><th>1.3</th><th>2.1</th><th>2.2</th><th>3.1</th><th>3.2</th><th>4.1</th><th>4.2</th><th>5.1</th><th>5.2</th>
 	var i=0;
 	for(i=0; i<tagsNames[$("tGroup").value].length; i++)
 	{
@@ -310,6 +309,8 @@ function getACTFLActivitiesListDisplay(responseJSON)
 		tr.inject(table.getElements("tbody")[0]);
 	};
 	table.inject(output);
+	var exportButton=new Element("a", {"html": "Export this course report as an Excel spreadsheet", "href": "./scripts/exportreport.php?courseId="+$("courseId").value});
+	exportButton.inject(output);
 }
 
 function switchTagGroup()
